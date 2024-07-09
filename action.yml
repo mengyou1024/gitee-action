@@ -1,0 +1,27 @@
+name: 'gitee-action'
+description: 'gitee action'
+inputs:
+  accessToken:
+    description: 'accessToken'
+    required: true
+  username:
+    description: 'username'
+    required: true
+  repo:
+    description: 'repo'
+    required: true
+  release_tag:
+    description: 'release tag'
+    required: true
+  release_name:
+    description: 'release name'
+    required: true
+  release_body:
+    description: 'release body'
+    required: true
+  release_file:
+    description: 'release file'
+    required: true
+runs:
+  using: 'node20'
+  main: 'index.js'
