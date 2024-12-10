@@ -63950,6 +63950,15 @@ client.createReleaseSync(release_tag, release_name, release_body, false, "master
     if (body.id) {
         console.log("rlease created, id:", body.id)
         core.info("release created, id:", body.id)
+        // 上传update_info.md
+        fs.writeFileSync("update_info.md", release_body)
+        client.uploadAssertSync(body.id, fs.createReadStream("update_info.md")).then(body => {
+            console.log(body)
+            core.info("upload update_info success:", body)
+        }).catch(err => {
+            console.log(err)
+        })
+
         client.uploadAssertSync(body.id, fs.createReadStream(release_file)).then(body => {
             console.log(body)
             core.info("upload assert success:", body)
